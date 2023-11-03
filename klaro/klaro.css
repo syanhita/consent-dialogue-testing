@@ -24,7 +24,8 @@ to create a white background.
 /* Breakpoints */
 
 :root {
-  --font-family: Arial, Helvetica, sans-serif !important;
+  --font-family: Arial, Helvetica, sans-serif;
+  --dark3: #dddddd;
 }
 
 .klaro {

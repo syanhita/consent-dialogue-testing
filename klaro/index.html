@@ -1,18 +1,35 @@
 <!DOCTYPE html>
-<html dir="ltr" lang="en">
+<html dir="ltr" lang="fr-CA">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link href="https://cdn.kiprotect.com/klaro/v0.7.18/klaro.css" type="text/css" rel="stylesheet" />
     <style>
+      :root {
+        --font-family: Arial, Helvetica, sans-serif;
+        --dark3: #dddddd;
+        --dark2: #aaa;
+      }
+
       body {
         font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
       }
+
       main {
         padding: 10px 21px;
       }
 
+      @media (prefers-color-scheme: dark) {
+        body {
+          background: rgb(35, 35, 35);
+          color: white;
+        }
+      }
+
+      .status {
+        padding: 10px 0;
+      }
       .klaro {
         line-height: 142%;
       }
@@ -24,6 +41,14 @@
         border-radius: 4px;
         padding: 4px 10px;
         cursor: pointer;
+      }
+
+      input:disabled + label .cm-switch .slider {
+        background-color: rgb(122, 122, 122) !important;
+      }
+
+      input:disabled + label .cm-switch .slider::before {
+        background-color: rgb(202, 202, 202) !important;
       }
 
       #klaro .cookie-notice {
@@ -58,8 +83,12 @@
     </style>
   </head>
   <body>
+    <header>
+      <div class="language-switch"></div>
+    </header>
     <main>
       <h1>Consent Dialogue Test</h1>
+      <p>Content library: <a href="https://klaro.org/docs/">Klaro</a></p>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum rhoncus tellus nec sem eleifend maximus. Nullam lectus magna, malesuada quis erat eu, mollis sagittis enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vestibulum ullamcorper velit non consequat dapibus. Nunc mi massa, congue vitae nulla quis, fermentum pharetra odio. Vestibulum nec hendrerit lorem, non fringilla metus. Pellentesque efficitur dui non aliquet porttitor. Maecenas malesuada sagittis turpis et mollis. Pellentesque scelerisque ante sit amet est pellentesque rutrum. Pellentesque pellentesque hendrerit mauris vitae suscipit. Vivamus porta nisi ac neque sodales scelerisque vitae a nulla.</p>
       <p>Praesent facilisis, nulla quis molestie pretium, sem velit consectetur arcu, sit amet fermentum dui lacus eu ex. Donec faucibus mauris vel facilisis aliquet. In aliquet elementum pellentesque. Sed vel metus volutpat massa tristique congue. Aliquam porttitor ac lorem a feugiat. Aliquam id purus ac dui pretium aliquet nec in nisl. Curabitur nec diam porttitor, cursus ex a, gravida risus. Fusce vitae odio urna. Praesent at magna sed magna varius pharetra ut sed ex. Aenean vestibulum ante augue, sit amet dictum erat porttitor a. Nulla commodo libero non tellus luctus, ut lacinia velit aliquam.</p>
       <p>Quisque id interdum nisi, vel pretium erat. Sed mattis lacinia iaculis. Pellentesque imperdiet efficitur lectus, id mollis magna commodo at. Vivamus sed ex in orci luctus elementum. Suspendisse malesuada felis mauris, et congue mauris dignissim eget. Fusce at rutrum ante. Suspendisse posuere convallis enim, at luctus velit blandit sit amet. Suspendisse nibh lorem, tempor vitae convallis vitae, consequat nec ante. In imperdiet molestie elit, ac accumsan risus. Nullam in libero tortor.</p>
@@ -72,7 +101,45 @@
       <p>Proin vestibulum augue et tristique dictum. Sed sem massa, varius sed arcu ac, tristique sollicitudin sapien. Nunc eu viverra ex. Suspendisse mollis nulla at est vulputate auctor. Fusce dictum nisi at sagittis interdum. Duis interdum est ut sapien dignissim tempus. Etiam ac tincidunt massa. Pellentesque quis molestie risus. In ut eros dolor. Aliquam tempus, mi ac rutrum euismod, quam dolor auctor enim, dictum rutrum magna arcu ac quam. Nam velit odio, eleifend ac sem id, consectetur cursus ex.</p>
 
       <button class="consent" onclick="klaro.show(undefined, true)">consent settings</button>
+      <button class="consent-reset" onclick="resetConsent()">reset consent settings</button>
+
+      <div class="status"></div>
     </main>
+
+    <script lang="javascript">
+      /**
+        Clears the saved consent. I couldn't find this functionality exposed.
+        Assumes we are using localStorage.
+      */
+      function resetConsent () {
+        localStorage.removeItem(klaroConfig.storageName);
+        klaro.show();
+      }
+
+      /**
+        Updates the language in the 'html' element
+       */
+      function updateDocumentLanguage () {
+        const supportLanguages = ['en', 'fr'];
+
+        let lang = 'en';
+        const search = new URLSearchParams(document.location.search);
+        lang = search.get('lang') || search.get('hl') || lang;
+        document.querySelector('html').lang = lang;
+
+        let html = '<ul>';
+
+        for (let i = 0; i < supportLanguages.length; i++) {
+          html += `<li><a href="?lang=${supportLanguages[i]}">${supportLanguages[i]}</a></li>`;
+        }
+
+        html += '</ul>';
+
+        document.querySelector('header .language-switch').innerHTML = html;
+      }
+
+      updateDocumentLanguage();
+    </script>
 
     <script
       type="application/javascript"
@@ -81,10 +148,11 @@
 
     <script
       type="text/plain"
-      data-type=""
+      data-type="application/javascript"
       data-name="googleAnalytics"
     >
-      window.alert('hello analytics');
+    // just here to demonstrate this works
+    document.querySelector('.status').innerHTML = 'analytics enabled';
     </script>
 
     <script
@@ -92,5 +160,6 @@
       type="application/javascript"
       src="https://cdn.kiprotect.com/klaro/v0.7.18/klaro.js">
     </script>
+
   </body>
 </html>
