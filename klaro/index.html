@@ -30,6 +30,7 @@
       .status {
         padding: 10px 0;
       }
+
       .klaro {
         line-height: 142%;
       }
@@ -43,12 +44,18 @@
         cursor: pointer;
       }
 
+      .klaro .cookie-modal .cm-list-input:not(:checked)+.cm-list-label .slider {
+        background-color: rgb(107, 107, 107) !important;
+      }
+
       input:disabled + label .cm-switch .slider {
-        background-color: rgb(122, 122, 122) !important;
+        background-color: rgb(202, 202, 202) !important;
       }
 
       input:disabled + label .cm-switch .slider::before {
-        background-color: rgb(202, 202, 202) !important;
+        content: 'x' !important;
+        text-align: center;
+        color: rgb(164, 164, 164);
       }
 
       #klaro .cookie-notice {
