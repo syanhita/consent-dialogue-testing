@@ -8,7 +8,7 @@ const klaroConfig = {
   storageName: 'klaro-consent',
   elementID: 'klaro',
   lang: 'en',
-  default: true,
+  default: false, // Defines the default state for services in the consent modal (true=enabled by default). You can override this setting in each service.
   hideDeclineAll: true,
   groupByPurpose: true, // Set to true to reduce clutter in the consent window by grouping app with the same purpose under the same trigger
   noticeAsModal: false,
@@ -198,6 +198,7 @@ klaroConfig.services.push({
 klaroConfig.services.push({
   name: 'google-tag-manager',
   required: true,
+  default: true,
   purposes: ['functional'], // GTM needs to run at all times in order to block or allow tags according to consent
   onAccept: `
     // we notify the tag manager about all services that were accepted. You can define
