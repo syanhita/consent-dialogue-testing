@@ -260,7 +260,7 @@ klaroConfig.services.push({
   }
 });
 
-
+/* Uncomment this part if we start using Google Ads - Use a similar block for Facebook if we start using Facebook Pixel  
 klaroConfig.services.push({   
   name: 'google-ads',
   purposes: ['marketing'],
@@ -282,6 +282,7 @@ klaroConfig.services.push({
     })
   `,
 });
+*/
 
 // select language based on html lang
 let docLang = document.querySelector('html').lang
