@@ -90,7 +90,7 @@ const klaroConfig = {
         title: 'Paramètres de consentement',
         description: 'Vous pouvez spécifier vos paramètres de confidentialité ci-dessous.',
         privacyPolicy: {
-          text: 'Des informations détaillées sur la manière dont vous pouvez retirer votre consentement à tout moment peuvent être trouvées dans notre {privacyPolicy}.',
+          text: 'Vous trouverez des informations détaillées sur la manière dont vous pouvez retirer votre consentement à tout moment dans notre {privacyPolicy}.',
           name: 'Politique de confidentialité'
         },
       },
@@ -105,19 +105,19 @@ const klaroConfig = {
       purposes: {
         'functional' : {
           title: 'Fonction de base',
-          description: 'Permet la sauvegarde d\'informations liés à la fonciton de base du site ou de l\'application tels que les préférences de language ou de confidentialité.'
+          description: 'Permet la sauvegarde d\'informations liés à la fonction de base du site ou de l\'application, comme les préférences de langue ou de confidentialité.'
         },
         'security': {
           title: 'Sécurité',
-          description: 'Permet la sauvegarde d\'informations liés à la sécurité tel que des fonctions d\'authentification, de prévention de fraude et autres formes de protection.'
+          description: 'Permet la sauvegarde d\'informations liés à la sécurité, comme les fonctions d\'authentification, de prévention de la fraude et autres formes de protection.'
         },
         'analytics': {
           title: 'Analyse de performance',
-          description: 'Collecte de données sur l\'utilisteur permettant l\'analyse de la performance du site afin d\'en améliorer le fonctionnement.'
+          description: 'Collecte de données sur la personne utilisatrice permettant l\'analyse de la performance du site afin d\'en améliorer le fonctionnement.'
         },
         'marketing': {
           title: 'Publicité',
-          description: 'Collecte de données sur l\'utilisteur afin d\'améliorer la qualité de la publicité qui lui est présentée.'
+          description: 'Collecte de données sur la personne utilisatrice afin d\'améliorer la qualité de la publicité qui lui est présentée.'
         },
         'unknown': 'Usage non-catégorisé'
       },
@@ -128,11 +128,11 @@ const klaroConfig = {
         },
         'optOut': {
           'title': '(Opt-Out)',
-          'description': 'Cette application est chargée par defaut mais peut être désactivée'
+          'description': 'Cette application est chargée par defaut, mais peut être désactivée.'
         },
         'required': {
           'title': '(obligatoire)',
-          'description': 'Cette application est toujours requise'
+          'description': 'Cette application est toujours requise.'
         },
         'purpose': 'Usage',
         'purposes': 'Usages'
@@ -143,7 +143,7 @@ const klaroConfig = {
       acceptSelected: 'Confirmer la sélection',
       decline: 'Refuser tout sauf les options nécessaires',
       close: 'Fermer',
-      poweredBy: 'Powered by Klaro',
+      poweredBy: 'Propulsé par Klaro',
     },
   },
   services: [
@@ -188,7 +188,7 @@ klaroConfig.services.push({
     },
     fr: {
       title: 'Session utilisateur',
-      description: 'Permet de conserver certaines actions effectuées lors de la navigation tels que la langue, les filtres ainsi que d\'utiliser nos formulaires.'
+      description: 'Permet de mémoriser certaines actions effectuées lors de la navigation, comme le choix de langue, les filtres ainsi que les formulaires utilisés.'
     }
   }
 });
@@ -224,7 +224,7 @@ klaroConfig.services.push({
     },
     fr: {
       title: 'Google Tag Manager',
-      description: 'Effectue la gestion de l\'activation de la mesure de performance et publicitaire.'
+      description: 'Gère l\'activation des mesures de performance et de marketing.'
     }
   }
 });
@@ -256,7 +256,7 @@ klaroConfig.services.push({
     },
     fr: {
       title: 'Google Analytics',
-      description: 'Collecte de statistiques anonymes sur les visiteurs du site.'
+      description: 'Collecte de statistiques anonymes sur les visites du site.'
     }
   }
 });
